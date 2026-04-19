@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SUI式・精密愛着診断25</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --lavender: #e8e0f0;
+    --lavender-deep: #c9b8e8;
+    --dusty-pink: #f0dde6;
+    --dusty-pink-deep: #e0b8cc;
+    --mint: #c8ede6;
+    --gold: #c9a96e;
+    --gold-light: #e8d5a8;
+    --text-dark: #2a2035;
+    --text-mid: #5a4a6a;
+    --text-light: #8a7a9a;
+    --white: #fdfcff;
+    --card-bg: rgba(255,255,255,0.72);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--white);
+    color: var(--text-dark);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ===== BACKGROUND ===== */
+  .bg-canvas {
+    position: fixed; inset: 0; z-index: 0;
+    background: linear-gradient(135deg, #f5eef8 0%, #fce8f0 35%, #eaf4f0 65%, #f0eaf8 100%);
+  }
+  .bg-canvas::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(ellipse 60% 40% at 20% 20%, rgba(201,185,232,0.25) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 60% at 80% 80%, rgba(224,184,204,0.2) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 50% at 60% 30%, rgba(200,237,230,0.2) 0%, transparent 60%);
+  }
+  .bg-canvas svg {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    opacity: 0.18;
+  }
+
+  /* ===== PAGES ===== */
+  .page {
+    position: relative; z-index: 1;
+    display: none;
+    min-height: 100vh;
+  }
+  .page.active { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+
+  /* ===== TOP PAGE ===== */
+  #page-top {
+    padding: 48px 24px;
+    text-align: center;
+  }
+  .top-ornament {
+    margin: 0 auto 28px;
+    width: 180px; height: 180px;
+    position: relative;
+  }
+  .top-ornament svg { overflow: visible; }
+  .orbit-ring {
+    transform-origin: 90px 90px;
+    animation: orbit-spin 18s linear infinite;
+  }
+  .orbit-ring-2 {
+    transform-origin: 90px 90px;
+    animation: orbit-spin 28s linear infinite reverse;
+  }
+  .orbit-ring-3 {
+    transform-origin: 90px 90px;
+    animation: orbit-spin 12s linear infinite;
+  }
+  @keyframes orbit-spin { to { transform: rotate(360deg); } }
+  .star-pulse { animation: star-twinkle 2.8s ease-in-out infinite; }
+  .star-pulse-2 { animation: star-twinkle 3.6s 0.8s ease-in-out infinite; }
+  .star-pulse-3 { animation: star-twinkle 2.2s 1.4s ease-in-out infinite; }
+  @keyframes star-twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+  .moon-glow { animation: moon-pulse 4s ease-in-out infinite; }
+  @keyframes moon-pulse {
+    0%, 100% { filter: drop-shadow(0 0 4px rgba(201,169,110,0.3)); }
+    50% { filter: drop-shadow(0 0 14px rgba(201,169,110,0.8)); }
+  }
+  .top-badge {
+    display: inline-block;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    border: 1px solid var(--gold-light);
+    padding: 6px 18px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+    background: rgba(255,255,255,0.6);
+  }
+  .top-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(22px, 5vw, 32px);
+    font-weight: 400;
+    color: var(--text-dark);
+    line-height: 1.5;
+    margin-bottom: 12px;
+    letter-spacing: 0.04em;
+  }
+  .top-title span { color: var(--gold); }
+  .top-copy {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(14px, 3vw, 18px);
+    color: var(--text-mid);
+    line-height: 1.9;
+    margin-bottom: 32px;
+    max-width: 480px;
+  }
+  .top-lead {
+    background: var(--card-bg);
+    border: 1px solid rgba(201,185,232,0.4);
+    border-radius: 16px;
+    padding: 20px 24px;
+    max-width: 480px;
+    margin: 0 auto 28px;
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.8;
+    text-align: left;
+    backdrop-filter: blur(8px);
+  }
+  .top-note {
+    background: rgba(200,237,230,0.3);
+    border-left: 3px solid var(--mint);
+    border-radius: 0 10px 10px 0;
+    padding: 14px 18px;
+    max-width: 480px;
+    margin: 0 auto 36px;
+    font-size: 12px;
+    color: var(--text-mid);
+    line-height: 1.8;
+    text-align: left;
+  }
+  .top-note strong { color: var(--text-dark); font-weight: 500; }
+  .top-meta {
+    font-size: 11px; color: var(--text-light); margin-bottom: 28px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ===== BUTTONS ===== */
+  .btn-primary {
+    display: inline-block;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 15px;
+    letter-spacing: 0.1em;
+    color: var(--white);
+    background: linear-gradient(135deg, #9b7ec8 0%, #c87ea8 100%);
+    border: none; border-radius: 40px;
+    padding: 16px 48px;
+    cursor: pointer;
+    box-shadow: 0 8px 32px rgba(155,126,200,0.35), 0 2px 8px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    position: relative; overflow: hidden;
+  }
+  .btn-primary::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
+    border-radius: 40px;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(155,126,200,0.45), 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .btn-primary:active { transform: translateY(0); }
+
+  .btn-secondary {
+    display: inline-block;
+    font-size: 13px;
+    color: var(--text-mid);
+    background: var(--card-bg);
+    border: 1px solid rgba(201,185,232,0.5);
+    border-radius: 30px;
+    padding: 12px 36px;
+    cursor: pointer;
+    transition: all 0.3s;
+    backdrop-filter: blur(8px);
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,0.9); }
+
+  /* ===== QUIZ PAGE ===== */
+  #page-quiz {
+    padding: 0;
+    justify-content: flex-start;
+  }
+  .quiz-header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 10;
+    background: rgba(253,252,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,185,232,0.25);
+    padding: 14px 24px 10px;
+  }
+  .quiz-progress-label {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 11px; color: var(--text-light); letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+  .quiz-progress-bar {
+    height: 3px;
+    background: rgba(201,185,232,0.3);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .quiz-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #9b7ec8, #c87ea8);
+    border-radius: 2px;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .quiz-body {
+    width: 100%; max-width: 540px;
+    margin: 0 auto;
+    padding: 100px 24px 60px;
+    display: flex; flex-direction: column; align-items: center;
+    min-height: 100vh;
+    justify-content: center;
+  }
+  .quiz-chapter {
+    font-size: 11px; letter-spacing: 0.2em; color: var(--gold);
+    margin-bottom: 12px; text-align: center;
+  }
+  .quiz-number {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 11px; color: var(--text-light);
+    margin-bottom: 20px; text-align: center; letter-spacing: 0.15em;
+  }
+  .quiz-question {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(16px, 4vw, 20px);
+    font-weight: 400;
+    color: var(--text-dark);
+    line-height: 1.85;
+    text-align: center;
+    margin-bottom: 40px;
+    max-width: 420px;
+    letter-spacing: 0.02em;
+  }
+  .quiz-scale {
+    width: 100%;
+    max-width: 400px;
+  }
+  .scale-labels {
+    display: flex; justify-content: space-between;
+    font-size: 10px; color: var(--text-light);
+    margin-bottom: 12px; padding: 0 4px;
+  }
+  .scale-options {
+    display: flex; gap: 10px; justify-content: center;
+  }
+  .scale-btn {
+    flex: 1; max-width: 68px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 1.5px solid rgba(201,185,232,0.5);
+    background: var(--card-bg);
+    backdrop-filter: blur(8px);
+    cursor: pointer;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 4px;
+    transition: all 0.25s ease;
+    font-size: 13px; font-weight: 500;
+    color: var(--text-mid);
+    position: relative;
+  }
+  .scale-btn:hover {
+    border-color: var(--lavender-deep);
+    background: rgba(201,185,232,0.2);
+    transform: scale(1.05);
+  }
+  .scale-btn.selected {
+    background: linear-gradient(135deg, rgba(155,126,200,0.25), rgba(200,126,168,0.25));
+    border-color: #9b7ec8;
+    color: #6a4a9a;
+    transform: scale(1.08);
+    box-shadow: 0 4px 16px rgba(155,126,200,0.25);
+  }
+  .scale-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: currentColor; opacity: 0.4;
+  }
+  .scale-btn.selected .scale-dot { opacity: 1; }
+  .quiz-nav {
+    display: flex; gap: 12px; margin-top: 40px; align-items: center;
+  }
+
+  /* ===== LOADING PAGE ===== */
+  #page-loading {
+    text-align: center;
+    padding: 48px 24px;
+  }
+  .loading-orb {
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, #9b7ec8, #c87ea8, #8ec8c0, #9b7ec8);
+    margin: 0 auto 32px;
+    animation: spin 3s linear infinite;
+    position: relative;
+  }
+  .loading-orb::after {
+    content: '';
+    position: absolute; inset: 8px;
+    border-radius: 50%;
+    background: var(--white);
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .loading-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 18px; color: var(--text-dark);
+    margin-bottom: 16px; letter-spacing: 0.05em; line-height: 1.6;
+  }
+  .loading-dots {
+    display: flex; gap: 8px; justify-content: center; margin-top: 20px;
+  }
+  .loading-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--lavender-deep);
+    animation: pulse 1.4s ease-in-out infinite;
+  }
+  .loading-dot:nth-child(2) { animation-delay: 0.2s; }
+  .loading-dot:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes pulse {
+    0%, 80%, 100% { transform: scale(0.8); opacity: 0.4; }
+    40% { transform: scale(1.2); opacity: 1; }
+  }
+
+  /* ===== RESULT PAGE ===== */
+  #page-result {
+    justify-content: flex-start;
+    padding-top: 0;
+  }
+  .result-hero {
+    width: 100%;
+    background: linear-gradient(180deg, rgba(155,126,200,0.12) 0%, transparent 100%);
+    padding: 60px 24px 40px;
+    text-align: center;
+    position: relative;
+  }
+  .result-hero::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+  }
+  .result-type-badge {
+    display: inline-block;
+    font-size: 11px; letter-spacing: 0.2em; color: var(--gold);
+    border: 1px solid var(--gold-light);
+    padding: 5px 16px; border-radius: 20px;
+    background: rgba(255,255,255,0.6);
+    margin-bottom: 24px;
+  }
+  .result-type-name {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(24px, 6.5vw, 36px);
+    font-weight: 400;
+    color: var(--text-dark);
+    line-height: 1.6;
+    margin-bottom: 14px;
+    letter-spacing: 0.04em;
+  }
+  .result-type-main {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(36px, 9vw, 52px);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #9b7ec8 0%, #c87ea8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .result-type-sub {
+    font-size: 12px; color: var(--text-light);
+    letter-spacing: 0.18em;
+    margin-top: 4px;
+  }
+  .result-body {
+    width: 100%; max-width: 560px;
+    margin: 0 auto;
+    padding: 32px 24px 80px;
+    display: flex; flex-direction: column; gap: 24px;
+  }
+  .result-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(201,185,232,0.35);
+    border-radius: 20px;
+    padding: 28px 24px;
+    backdrop-filter: blur(12px);
+  }
+  .result-card h3 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 14px; font-weight: 400;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    margin-bottom: 16px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .result-card h3::before {
+    content: '';
+    width: 20px; height: 1px;
+    background: var(--gold);
+    display: inline-block;
+  }
+  .result-card p {
+    font-size: 13.5px; line-height: 2;
+    color: var(--text-mid);
+  }
+  .score-display {
+    display: flex; gap: 16px; margin-bottom: 24px;
+  }
+  .score-item {
+    flex: 1; text-align: center;
+    border-radius: 14px; padding: 16px 12px;
+    position: relative; overflow: hidden;
+  }
+  .score-item.anxiety {
+    background: linear-gradient(135deg, rgba(240,185,200,0.3), rgba(220,160,185,0.2));
+    border: 1px solid rgba(220,160,185,0.4);
+  }
+  .score-item.avoid {
+    background: linear-gradient(135deg, rgba(185,220,230,0.3), rgba(160,200,215,0.2));
+    border: 1px solid rgba(160,200,215,0.4);
+  }
+  .score-label {
+    font-size: 11px; color: var(--text-light); letter-spacing: 0.12em;
+    margin-bottom: 6px;
+  }
+  .score-value {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 30px; font-weight: 300;
+    color: var(--text-dark);
+  }
+  .score-value span { font-size: 12px; color: var(--text-light); }
+  .score-bar-wrap {
+    margin-top: 10px;
+    height: 7px;
+    background: rgba(255,255,255,0.45);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .score-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 1.4s cubic-bezier(0.4,0,0.2,1);
+  }
+  .anxiety .score-bar-fill { background: linear-gradient(90deg, #e0b8cc, #c87ea8); }
+  .avoid .score-bar-fill { background: linear-gradient(90deg, #8ec8c0, #6ab0c0); }
+  .score-pct-row {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 5px;
+  }
+  .score-pct-label { font-size: 10px; color: var(--text-light); letter-spacing: 0.05em; }
+  .score-pct-value { font-size: 11px; color: var(--text-mid); font-weight: 500; }
+
+
+  .chapter-section {
+    margin-bottom: 0;
+  }
+  .chapter-section h4 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 13px; font-weight: 400;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(201,185,232,0.3);
+  }
+  .chapter-section p {
+    font-size: 13px; line-height: 1.95;
+    color: var(--text-mid);
+  }
+  /* Traits card */
+  .traits-card { padding: 28px 24px; }
+  .trait-block {
+    margin-bottom: 22px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid rgba(201,185,232,0.2);
+  }
+  .trait-block:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+  .trait-title {
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 13px; font-weight: 400;
+    color: var(--text-dark);
+    margin-bottom: 10px; letter-spacing: 0.05em;
+  }
+  .trait-icon {
+    width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+  }
+  .trait-icon.pink  { background: rgba(240,185,200,0.35); }
+  .trait-icon.lavender { background: rgba(185,165,220,0.3); }
+  .trait-icon.mint  { background: rgba(165,220,205,0.35); }
+  .trait-icon.gold  { background: rgba(201,169,110,0.2); }
+  .trait-icon.blue  { background: rgba(165,200,220,0.3); }
+  .trait-body {
+    font-size: 13px; line-height: 2;
+    color: var(--text-mid);
+    padding-left: 38px;
+  }
+
+  /* Result body text */
+  .res-body-text {
+    font-size: 13.5px;
+    line-height: 2.15;
+    color: var(--text-mid);
+    letter-spacing: 0.03em;
+  }
+
+  /* Strength / Weakness list */
+  .res-list-wrap { display: flex; flex-direction: column; gap: 14px; }
+  .res-list-item {
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .res-list-num {
+    flex-shrink: 0;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #9b7ec8, #c87ea8);
+    color: white;
+    font-size: 10px;
+    font-family: 'Noto Serif JP', serif;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .res-list-num.weak {
+    background: linear-gradient(135deg, #8ec8c0, #6ab0c0);
+  }
+  .res-list-content {}
+  .res-list-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 13px;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+    line-height: 1.55;
+  }
+  .res-list-body {
+    font-size: 12.5px;
+    line-height: 1.95;
+    color: var(--text-mid);
+  }
+
+  .retry-btn {
+    display: block; width: fit-content;
+    margin: 0 auto;
+    font-size: 12px; color: var(--text-light);
+    background: none; border: none;
+    cursor: pointer; letter-spacing: 0.1em;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .retry-btn:hover { color: var(--text-mid); }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up { animation: fadeUp 0.6s ease forwards; }
+  .fade-up-2 { animation: fadeUp 0.6s 0.15s ease forwards; opacity: 0; }
+  .fade-up-3 { animation: fadeUp 0.6s 0.3s ease forwards; opacity: 0; }
+  .fade-up-4 { animation: fadeUp 0.6s 0.45s ease forwards; opacity: 0; }
+
+  /* star field */
+  .star { position: absolute; border-radius: 50%; background: var(--gold); animation: twinkle 3s ease-in-out infinite; }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.3); }
+  }
+</style>
+</head>
+<body>
+
+<!-- Background -->
+<div class="bg-canvas">
+  <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <!-- Moon -->
+    <circle cx="650" cy="100" r="55" fill="none" stroke="#c9a96e" stroke-width="0.5"/>
+    <circle cx="670" cy="85" r="55" fill="rgba(240,230,250,0.7)"/>
+    <!-- Stars -->
+    <g fill="#c9a96e">
+      <polygon points="100,50 103,60 113,60 105,66 108,76 100,70 92,76 95,66 87,60 97,60" transform="scale(0.5) translate(100,50)"/>
+      <polygon points="200,150 202,156 208,156 203,160 205,166 200,162 195,166 197,160 192,156 198,156" transform="scale(0.6) translate(-50,100)"/>
+      <polygon points="700,300 702,306 708,306 703,310 705,316 700,312 695,316 697,310 692,306 698,306" transform="scale(0.4)"/>
+    </g>
+    <!-- Geometric lines -->
+    <circle cx="400" cy="300" r="200" fill="none" stroke="#c9a96e" stroke-width="0.3" opacity="0.5"/>
+    <circle cx="400" cy="300" r="150" fill="none" stroke="#c9b8e8" stroke-width="0.3" opacity="0.4"/>
+    <circle cx="400" cy="300" r="100" fill="none" stroke="#e0b8cc" stroke-width="0.3" opacity="0.4"/>
+    <!-- Triangle -->
+    <polygon points="400,100 550,370 250,370" fill="none" stroke="#c9a96e" stroke-width="0.4" opacity="0.3"/>
+    <!-- Cross lines -->
+    <line x1="0" y1="300" x2="800" y2="300" stroke="#c9b8e8" stroke-width="0.3" opacity="0.3"/>
+    <line x1="400" y1="0" x2="400" y2="600" stroke="#c9b8e8" stroke-width="0.3" opacity="0.3"/>
+  </svg>
+</div>
+
+<!-- ===== PAGE 1: TOP ===== -->
+<div id="page-top" class="page active">
+  <div class="top-ornament fade-up">
+    <svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg" width="180" height="180">
+      <!-- Outer decorative ring with tick marks -->
+      <circle cx="90" cy="90" r="84" stroke="#c9a96e" stroke-width="0.6" opacity="0.5"/>
+      <circle cx="90" cy="90" r="80" stroke="#c9b8e8" stroke-width="0.3" opacity="0.6"/>
+      <!-- 24 tick marks on outer ring -->
+      <g stroke="#c9a96e" stroke-width="0.8" opacity="0.6">
+        <line x1="90" y1="6" x2="90" y2="12"/><line x1="90" y1="168" x2="90" y2="174"/>
+        <line x1="174" y1="90" x2="168" y2="90"/><line x1="6" y1="90" x2="12" y2="90"/>
+        <line x1="148.7" y1="31.3" x2="144.4" y2="35.6"/><line x1="31.3" y1="148.7" x2="35.6" y2="144.4"/>
+        <line x1="148.7" y1="148.7" x2="144.4" y2="144.4"/><line x1="31.3" y1="31.3" x2="35.6" y2="35.6"/>
+        <line x1="90" y1="6" x2="90" y2="9" transform="rotate(30 90 90)"/>
+        <line x1="90" y1="6" x2="90" y2="9" transform="rotate(60 90 90)"/>
+        <line x1="90" y1="6" x2="90" y2="9" transform="rotate(120 90 90)"/>
+        <line x1="90" y1="6" x2="90" y2="9" transform="rotate(150 90 90)"/>
+        <line x1="90" y1="6" x2="90" y2="9" transform="rotate(210 90 90)"/>
+        <line x1="90" y1="6" x2="90" y2="9" transform="rotate(240 90 90)"/>
+        <line x1="90" y1="6" x2="90" y2="9" transform="rotate(300 90 90)"/>
+        <line x1="90" y1="6" x2="90" y2="9" transform="rotate(330 90 90)"/>
+      </g>
+
+      <!-- Rotating outer geometry -->
+      <g class="orbit-ring">
+        <!-- Hexagon -->
+        <polygon points="90,20 142,52.5 142,127.5 90,160 38,127.5 38,52.5"
+          fill="none" stroke="#c9b8e8" stroke-width="0.5" opacity="0.5"/>
+        <!-- Small diamond markers at vertices -->
+        <circle cx="90" cy="20" r="2" fill="#c9a96e" opacity="0.7"/>
+        <circle cx="142" cy="52.5" r="2" fill="#c9a96e" opacity="0.7"/>
+        <circle cx="142" cy="127.5" r="2" fill="#c9a96e" opacity="0.7"/>
+        <circle cx="90" cy="160" r="2" fill="#c9a96e" opacity="0.7"/>
+        <circle cx="38" cy="52.5" r="2" fill="#c9a96e" opacity="0.7"/>
+        <circle cx="38" cy="127.5" r="2" fill="#c9a96e" opacity="0.7"/>
+      </g>
+
+      <!-- Counter-rotating middle ring -->
+      <g class="orbit-ring-2">
+        <!-- Square rotated 45deg -->
+        <polygon points="90,34 146,90 90,146 34,90"
+          fill="none" stroke="#e0b8cc" stroke-width="0.5" opacity="0.5"/>
+        <!-- Dashed inner circle -->
+        <circle cx="90" cy="90" r="52" fill="none" stroke="#c9b8e8" stroke-width="0.4"
+          stroke-dasharray="4 6" opacity="0.5"/>
+        <!-- Corner dots -->
+        <circle cx="90" cy="34" r="1.5" fill="#e0b8cc" opacity="0.8"/>
+        <circle cx="146" cy="90" r="1.5" fill="#e0b8cc" opacity="0.8"/>
+        <circle cx="90" cy="146" r="1.5" fill="#e0b8cc" opacity="0.8"/>
+        <circle cx="34" cy="90" r="1.5" fill="#e0b8cc" opacity="0.8"/>
+      </g>
+
+      <!-- Fast inner triangle spin -->
+      <g class="orbit-ring-3">
+        <polygon points="90,44 126,111 54,111"
+          fill="none" stroke="#c9a96e" stroke-width="0.6" opacity="0.4"/>
+        <polygon points="90,136 54,69 126,69"
+          fill="none" stroke="#c9b8e8" stroke-width="0.5" opacity="0.4"/>
+      </g>
+
+      <!-- Static moon crescent (center-left area) -->
+      <g class="moon-glow">
+        <circle cx="90" cy="90" r="26" fill="rgba(240,230,255,0.55)" stroke="#c9a96e" stroke-width="0.8"/>
+        <circle cx="99" cy="84" r="22" fill="rgba(248,242,255,0.85)"/>
+      </g>
+
+      <!-- Constellation dots + lines -->
+      <g opacity="0.7">
+        <line x1="62" y1="58" x2="78" y2="72" stroke="#c9b8e8" stroke-width="0.5"/>
+        <line x1="78" y1="72" x2="95" y2="65" stroke="#c9b8e8" stroke-width="0.5"/>
+        <line x1="118" y1="62" x2="105" y2="78" stroke="#c9b8e8" stroke-width="0.5"/>
+        <line x1="105" y1="78" x2="115" y2="98" stroke="#c9b8e8" stroke-width="0.5"/>
+        <line x1="68" y1="118" x2="80" y2="105" stroke="#c9b8e8" stroke-width="0.5"/>
+      </g>
+      <!-- Twinkling stars -->
+      <circle class="star-pulse" cx="62" cy="58" r="2.5" fill="#c9a96e"/>
+      <circle class="star-pulse-2" cx="118" cy="62" r="2" fill="#c9b8e8"/>
+      <circle class="star-pulse-3" cx="68" cy="118" r="2" fill="#e0b8cc"/>
+      <circle class="star-pulse" cx="78" cy="72" r="1.5" fill="#c9a96e" style="animation-delay:1s"/>
+      <circle class="star-pulse-2" cx="115" cy="98" r="1.5" fill="#c9b8e8" style="animation-delay:0.4s"/>
+      <circle class="star-pulse-3" cx="80" cy="105" r="1.5" fill="#e0b8cc" style="animation-delay:1.8s"/>
+      <circle class="star-pulse" cx="95" cy="65" r="1.5" fill="#c9a96e" style="animation-delay:2.1s"/>
+
+      <!-- Center gem -->
+      <polygon points="90,76 96,87 90,98 84,87"
+        fill="rgba(201,169,110,0.15)" stroke="#c9a96e" stroke-width="0.8"/>
+      <polygon points="90,80 94,87 90,94 86,87"
+        fill="rgba(201,169,110,0.25)" stroke="#c9a96e" stroke-width="0.5"/>
+      <circle cx="90" cy="87" r="2" fill="#c9a96e" opacity="0.8"/>
+
+      <!-- Cardinal compass marks -->
+      <g fill="#c9a96e" opacity="0.5" font-family="serif" font-size="7">
+        <text x="87.5" y="4" text-anchor="middle">N</text>
+        <text x="87.5" y="178" text-anchor="middle">S</text>
+        <text x="178" y="93" text-anchor="middle">E</text>
+        <text x="2" y="93" text-anchor="middle">W</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="top-badge fade-up-2">SUI ATTACHMENT DIAGNOSIS</div>
+
+  <h1 class="top-title fade-up-2">
+    25の質問が解き明かす、<br>あなたの<span>愛の正体</span>。
+  </h1>
+
+  <p class="top-copy fade-up-3">
+    心理学の愛着理論に基づき、<br>あなたの無意識下に眠る<br>「内的作業モデル」を精密に測定します。
+  </p>
+
+  <div class="top-lead fade-up-3">
+    <strong style="font-size:12px;color:var(--text-dark);display:block;margin-bottom:8px;">診断について</strong>
+    本診断はECR-R尺度（経験的愛着スタイル尺度）に基づいた25問の心理検査です。
+    不安尺度・回避尺度の2軸から、あなたの愛着スタイルを精密に判定します。
+    所要時間は約5〜7分です。
+  </div>
+
+  <div class="top-note fade-up-4">
+    <strong>※ 恋人がいない方へ</strong><br>
+    現在パートナーがいない方、恋愛経験がない方は、好きな人や親友など「大切な人」を思い浮かべて回答してください。
+  </div>
+
+  <p class="top-meta fade-up-4">全25問 ｜ 所要時間 約5〜7分</p>
+
+  <button class="btn-primary fade-up-4" onclick="startQuiz()">診断をはじめる</button>
+</div>
+
+<!-- ===== PAGE 2: QUIZ ===== -->
+<div id="page-quiz" class="page">
+  <div class="quiz-header">
+    <div class="quiz-progress-label">
+      <span id="quiz-progress-text">第1章：連絡と反応への感受性</span>
+      <span id="quiz-count-text">1 / 25</span>
+    </div>
+    <div class="quiz-progress-bar">
+      <div class="quiz-progress-fill" id="progress-fill" style="width:2%"></div>
+    </div>
+  </div>
+
+  <div class="quiz-body">
+    <div class="quiz-chapter" id="quiz-chapter">第1章：連絡と反応への感受性</div>
+    <div class="quiz-number" id="quiz-number">Q.01 / 25</div>
+    <div class="quiz-question" id="quiz-question"></div>
+    <div class="quiz-scale">
+      <div class="scale-labels">
+        <span>全く当てはまらない</span>
+        <span>非常に当てはまる</span>
+      </div>
+      <div class="scale-options" id="scale-options">
+        <button class="scale-btn" data-val="1" onclick="selectAnswer(1)">
+          <span>1</span>
+          <div class="scale-dot"></div>
+        </button>
+        <button class="scale-btn" data-val="2" onclick="selectAnswer(2)">
+          <span>2</span>
+          <div class="scale-dot"></div>
+        </button>
+        <button class="scale-btn" data-val="3" onclick="selectAnswer(3)">
+          <span>3</span>
+          <div class="scale-dot"></div>
+        </button>
+        <button class="scale-btn" data-val="4" onclick="selectAnswer(4)">
+          <span>4</span>
+          <div class="scale-dot"></div>
+        </button>
+        <button class="scale-btn" data-val="5" onclick="selectAnswer(5)">
+          <span>5</span>
+          <div class="scale-dot"></div>
+        </button>
+      </div>
+    </div>
+    <div class="quiz-nav">
+      <button class="btn-secondary" id="btn-prev" onclick="prevQuestion()" style="display:none">← 前へ</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PAGE 3: LOADING ===== -->
+<div id="page-loading" class="page">
+  <div class="loading-orb"></div>
+  <div class="loading-title">
+    回答を受け付けました。<br>あなたの内的作業モデルを<br>解析中...
+  </div>
+  <p style="font-size:12px;color:var(--text-light);margin-top:12px;letter-spacing:0.1em;">ECR-R尺度に基づき精密計算しています</p>
+  <div class="loading-dots">
+    <div class="loading-dot"></div>
+    <div class="loading-dot"></div>
+    <div class="loading-dot"></div>
+  </div>
+</div>
+
+<!-- ===== PAGE 4: RESULT ===== -->
+<div id="page-result" class="page">
+  <div class="result-hero">
+    <div class="result-type-badge" id="res-badge">DIAGNOSIS RESULT</div>
+    <div class="result-type-main" id="res-type-main"></div>
+    <div class="result-type-name" id="res-name"></div>
+    <div class="result-type-sub" id="res-sub"></div>
+  </div>
+  <div class="result-body">
+    <!-- Score -->
+    <div class="result-card fade-up">
+      <h3>数値結果</h3>
+      <div class="score-display">
+        <div class="score-item anxiety">
+          <div class="score-label">不安度</div>
+          <div class="score-value" id="res-anxiety-score">－<span>%</span></div>
+          <div class="score-bar-wrap"><div class="score-bar-fill" id="anxiety-bar" style="width:0%"></div></div>
+          <div class="score-pct-row">
+            <span class="score-pct-label">低</span>
+            <span class="score-pct-label">高</span>
+          </div>
+        </div>
+        <div class="score-item avoid">
+          <div class="score-label">回避度</div>
+          <div class="score-value" id="res-avoid-score">－<span>%</span></div>
+          <div class="score-bar-wrap"><div class="score-bar-fill" id="avoid-bar" style="width:0%"></div></div>
+          <div class="score-pct-row">
+            <span class="score-pct-label">低</span>
+            <span class="score-pct-label">高</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 心理特性 -->
+    <div class="result-card fade-up-2">
+      <h3>心理的特性</h3>
+      <div id="res-psychology" class="res-body-text"></div>
+    </div>
+
+    <!-- 恋愛傾向 -->
+    <div class="result-card fade-up-3">
+      <h3>恋愛傾向</h3>
+      <div id="res-love" class="res-body-text"></div>
+    </div>
+
+    <!-- 強み -->
+    <div class="result-card fade-up-4">
+      <h3>強み</h3>
+      <div id="res-strengths" class="res-list-wrap"></div>
+    </div>
+
+    <!-- 弱み -->
+    <div class="result-card fade-up-4">
+      <h3>課題・弱み</h3>
+      <div id="res-weaknesses" class="res-list-wrap"></div>
+    </div>
+
+    <button class="retry-btn" onclick="retryQuiz()">もう一度診断する</button>
+    <button class="retry-btn" onclick="showPage('page-top')" style="margin-top:8px;">← トップページに戻る</button>
+  </div>
+</div>
+
+<script>
+// ===== QUESTIONS DATA =====
+const questions = [
+  // 第1章（A×5）
+  { q: "パートナーからの返信が遅いと、「何か怒らせることを言ったかな？」と不安になる", type: "A", ch: "第1章：連絡と反応への感受性" },
+  { q: "既読スルーされると、嫌われたのではないかという考えが頭から離れなくなる", type: "A", ch: "第1章：連絡と反応への感受性" },
+  { q: "「好きだよ」などの分かりやすい愛情表現がないと、相手の気持ちを信じるのが難しい", type: "A", ch: "第1章：連絡と反応への感受性" },
+  { q: "返信が来ないとき、相手に嫌われないよう「追いLINE」を我慢するのがとても苦しい", type: "A", ch: "第1章：連絡と反応への感受性" },
+  { q: "パートナーに会っていない時間は、常に「今何をしているか」が気になって落ち着かない", type: "A", ch: "第1章：連絡と反応への感受性" },
+  // 第2章（V×5）
+  { q: "パートナーと長時間一緒にいすぎると、一人になりたいと強く感じることがある", type: "V", ch: "第2章：心の距離感と自立心" },
+  { q: "悩み事があっても、相手に相談するより「自分で解決したほうが早い」と思ってしまう", type: "V", ch: "第2章：心の距離感と自立心" },
+  { q: "自分の弱みや過去のトラウマを話すのは、相手が誰であっても抵抗がある", type: "V", ch: "第2章：心の距離感と自立心" },
+  { q: "「自分の自由がなくなるくらいなら、一人のほうがマシだ」と思う瞬間がある", type: "V", ch: "第2章：心の距離感と自立心" },
+  { q: "将来の約束（結婚や同棲など）を迫られると、プレッシャーで息苦しくなる", type: "V", ch: "第2章：心の距離感と自立心" },
+  // 第3章（A×3、V×2）
+  { q: "そもそも自分は、「ありのままの姿で愛される価値」がある人間だと思えない", type: "A", ch: "第3章：信頼と自己肯定感" },
+  { q: "パートナーがいざという時に、自分を助けてくれるとは心から信じられない", type: "V", ch: "第3章：信頼と自己肯定感" },
+  { q: "自分の本音を伝えると、相手を困らせたり、嫌われたりするのではないかと怯えてしまう", type: "A", ch: "第3章：信頼と自己肯定感" },
+  { q: "相手の些細な言動（視線や口調）で、「あ、今大切にされていないな」と決めつけてしまう", type: "A", ch: "第3章：信頼と自己肯定感" },
+  { q: "どんなに幸せな瞬間でも、心のどこかで「いつか終わる」と覚悟して予防線を張っている", type: "V", ch: "第3章：信頼と自己肯定感" },
+  // 第4章（V×4、A×1）
+  { q: "子供の頃、親に甘えたい時に素直に甘えることができなかった記憶がある", type: "V", ch: "第4章：過去の経験とルーツ" },
+  { q: "親の顔色を伺って、期待に応える「いい子」でいようと無理をしていた", type: "A", ch: "第4章：過去の経験とルーツ" },
+  { q: "「家族」というものに対して、温かさよりも息苦しさや冷たさを感じることが多い", type: "V", ch: "第4章：過去の経験とルーツ" },
+  { q: "相手に深く愛されると、どうしていいか分からず、かえってパニックや恐怖を覚える", type: "V", ch: "第4章：過去の経験とルーツ" },
+  { q: "自分の「居場所」を求めているけれど、どこにいても孤独感が消えない", type: "A", ch: "第4章：過去の経験とルーツ" },
+  // 第5章（A×2、V×1、B×2）
+  { q: "喧嘩や揉めごとを避けるためなら、自分の本当の気持ちを飲み込んで我慢することを選ぶ", type: "A", ch: "第5章：現在の恋愛パターンと未来への願い" },
+  { q: "なぜか「自分を大切にしてくれない人」や「手が届かない人」ばかりを好きになってしまう", type: "A", ch: "第5章：現在の恋愛パターンと未来への願い" },
+  { q: "体の関係や外見の魅力で繋がっている安心感はあるが、心の底からの繋がりを感じにくい", type: "V", ch: "第5章：現在の恋愛パターンと未来への願い" },
+  { q: "穏やかで安定した恋愛は、どこか「退屈」だったり「物足りない」と感じて長続きしない", type: "B", ch: "第5章：現在の恋愛パターンと未来への願い" },
+  { q: "これまでの恋愛を振り返ると、いつも同じような理由やパターンで別れている気がする", type: "B", ch: "第5章：現在の恋愛パターンと未来への願い" },
+];
+
+// ===== RESULT CONTENT =====
+const resultContent = {
+  secure: {
+    badge: "安定型",
+    typeMain: "安定型",
+    name: "穏やかな凪の海を行く、自己信頼の人",
+    sub: "SECURE ATTACHMENT TYPE",
+    psychology: `安定型の心理を一言で表すと、穏やかな凪の海を航行する船のような、極めてバランスの取れた状態にあります。\n\nこのスタイルの根底には「自分はありのままの存在で愛される価値がある」というポジティブな自己肯定感と、「他者は基本的に信頼でき、助け合える存在である」という他者肯定感の両方が強固に存在しています。そのため、他者と親密になることを自然な喜びとして受け入れ、過度な不安や束縛を感じることなく、心地よい距離感を保つことができます。\n\n自分の中に「安全基地」を内面化しているため、たとえ一時的にストレスや拒絶を経験したとしても、感情を適切に処理し、立ち直るためのレジリエンス（回復力）が非常に高いのが特徴です。精神的な自立と相互依存を両立させており、他者に対しても安定した心の安らぎを提供できる傾向にあります。`,
+    love: `恋愛においては、この心の安定が「一貫性のある誠実なコミュニケーション」として現れます。\n\n関係が深まることを脅威ではなく、互いの人生を豊かにするプロセスとして捉えるため、自分の弱さや本音を素直に開示することに抵抗がありません。相手との間に問題が生じても、過度に自分を責めたり相手を攻撃したりせず、建設的な対話を通じて解決策を見出そうとします。\n\n「見捨てられる不安」に怯えることも、「自律を奪われる恐怖」に逃げ出すこともないため、相手に対して安定した愛情を注ぎ続けることができます。安定型との恋愛は、刺激的なアップダウンこそ少ないかもしれませんが、時間が経つほどに信頼が積み重なり、深い安心感に満ちた長期的なパートナーシップへと発展しやすいのが特徴です。`,
+    strengths: [
+      { title: "優れた感情調節能力", body: "自身の感情を客観的に捉え、適切にコントロールする力に長けています。ネガティブな感情に支配されず、冷静かつ柔軟な思考を維持できるため、精神的に非常に安定しています。" },
+      { title: "健全な境界線の維持", body: "自分と他者の間に適切な「心の境界線」を引くことができます。相手の感情に飲み込まれず、かといって冷淡にもならず、自分を大切にしながら相手を尊重するバランス感覚に優れています。" },
+      { title: "建設的な紛争解決能力", body: "対立を「勝ち負け」ではなく「相互理解の機会」と捉えます。感情的な爆発や無視といった逃避を行わず、言葉を尽くして問題の核心に向き合い、調和を見出す力を持っています。" },
+      { title: "高い自己回復力（レジリエンス）", body: "失敗や失恋、対人トラブルに直面しても、過度に自己評価を下げることがありません。経験から学び、前向きに次のステップへ進むためのしなやかな強さを持っています。" },
+      { title: "他者へのポジティブな影響力", body: "本人が安定しているため、周囲の人々に安心感を与え、自然と信頼関係を引き寄せます。リーダーシップやカウンセリング的な役割においても高い資質を発揮します。" }
+    ],
+    weaknesses: [
+      { title: "不安定型の苦悩への理解の難しさ", body: "自身が「見捨てられる恐怖」や「親密さへの拒絶」を経験しにくいため、不安型や回避型のパートナーが抱える切実な痛みを、理屈ではわかっても実感として理解しにくい側面があります。" },
+      { title: "楽観視によるリスクの見落とし", body: "他者を基本的に信じているため、悪意や搾取的な意図を持つ人物に対しても「話し合えばわかる」と楽観的に捉えてしまい、回避可能なトラブルに巻き込まれるリスクがあります。" },
+      { title: "刺激不足と誤解される「凪」の状態", body: "関係が極めて安定しているため、ドラマチックな激しさを求めるタイプからは「物足りない」「情熱がない」と誤解されたり、マンネリ化していると見なされたりすることがあります。" },
+      { title: "相手への過度な改善期待（サンクコストの罠）", body: "「対話で解決できる」という信念が強すぎるあまり、明らかに有害な関係であっても、相手が変わることを信じて長く留まり続け、エネルギーを消耗してしまうケースがあります。" },
+      { title: "自身の内面的な「無難さ」への葛藤", body: "常に適応的でバランスが取れているがゆえに、時に自分の強烈な個性や衝動、ドラスティックな変化を抑え込んでしまい、優等生的な生き方に窮屈さを感じることがあります。" }
+    ]
+  },
+  anxious: {
+    badge: "不安型",
+    typeMain: "不安型",
+    name: "愛を渇望する「共鳴のセンサー」の人",
+    sub: "ANXIOUS ATTACHMENT TYPE",
+    psychology: `不安型の心理を一言で表すと、荒天の海で灯台の光を探し続ける小舟のような、常に愛着のシグナルに敏感な状態にあります。\n\nこのスタイルの根底には「自分は愛されるに値しないのではないか」という低い自己肯定感と、「他者は自分を満たしてくれる存在であるが、いつか離れていってしまう」という他者への強い依存心が同居しています。そのため、他者と親密になることに強い意欲を持ちますが、相手の些細な反応の変化を「拒絶」や「関心の喪失」と過敏に捉えてしまい、心の平安を保つことが困難になりやすい傾向があります。\n\n自分の中に「安全基地」を確立できていないため、安心感の供給を外部（パートナーや親密な他者）に強く求めます。ひとたび不安がトリガーされると、その感情をなだめることが難しく、相手の注意を引くための行動（抗議行動）に出てしまうのも大きな特徴です。`,
+    love: `恋愛においては、この愛着への希求が「相手と一つになりたい」という強い融合願望として現れます。\n\n相手を好きになると人生の優先順位が極端に相手へ傾き、常に相手の機嫌や連絡の頻度に一喜一憂するようになります。少しでも返信が遅れたり、相手の態度が素っ気ないと感じたりすると、「見捨てられる不安」が爆発し、何度も連絡をしたり、逆に相手を試すような態度をとったりして、関係にドラマチックな激しさをもたらします。\n\nしかし、ひとたび愛情を確認できれば、誰よりも献身的で情熱的なパートナーとなり、相手のニーズを察知して尽くすことに喜びを感じます。`,
+    strengths: [
+      { title: "高い共感能力と感受性", body: "相手の表情、声のトーン、態度の微細な変化を察知する能力が非常に優れています。相手が何を求めているかを瞬時に理解し、細やかな配慮やサポートができる慈愛に満ちた一面を持っています。" },
+      { title: "濃密で深い親密さの構築", body: "「自律」よりも「融合」を重んじるため、パートナーと非常に深い情緒的つながりを築こうとします。打算なく全力で相手を愛し、二人の世界を大切にする姿勢は、相手に「深く愛されている」という実感を与えます。" },
+      { title: "危機管理における「警戒システム」", body: "人間関係における不協和音を誰よりも早く察知します。この敏感さは、トラブルが大きくなる前に「何かがおかしい」と気づく早期警戒システムとして機能することがあります。" },
+      { title: "情熱的で献身的なエネルギー", body: "愛する人のためなら、自分の労力を惜しまず尽くす圧倒的なエネルギーを持っています。その一途な姿勢は、停滞した関係に活力を与え、相手の心の支えとなる大きな力になります。" },
+      { title: "自己改善への意欲", body: "「愛される自分でありたい」という願いが強いため、自分を磨いたり、心理学を学んだり、関係を良くするための努力を怠りません。内省する力が強く、変化に対して柔軟な姿勢を持っています。" }
+    ],
+    weaknesses: [
+      { title: "感情のアップダウンの激しさ", body: "不安が引き金となり、一度ネガティブな感情に火がつくと自分ではコントロールが効かなくなることがあります。パニックや激しい怒り、深い抑うつに支配されやすく、精神的な消耗が激しいのが特徴です。" },
+      { title: "過度な「抗議行動」による自滅", body: "不安を解消したい一心で、相手を責める、わざと連絡を断つ、嫉妬を煽るといった「試し行為」をしてしまいがちです。これが結果として相手を疲れさせ、最も恐れていた「別れ」を自ら引き寄せてしまうことがあります。" },
+      { title: "自他境界の曖昧さと依存", body: "相手の幸福が自分の幸福、相手の不機嫌が自分の不幸というように、心の境界線が曖昧な状態になります。自分自身の人生や趣味を疎かにしてしまい、相手に精神的な重荷を感じさせてしまうリスクがあります。" },
+      { title: "低い自己価値観と過剰な適合", body: "相手に嫌われないために、自分の本音を押し殺して相手の顔色を伺いすぎてしまいます。結果として「都合のいい存在」になり下がってしまったり、自分らしさを見失って自己嫌悪に陥ることが多々あります。" },
+      { title: "「認知の歪み」による誤解", body: "中立的な出来事（例：忙しくて返信ができない）を「悪意ある拒絶」とネガティブに飛躍して解釈してしまいます。客観的な事実よりも自分の抱いた不安を「真実」と思い込み、一人で悲劇を演じてしまう傾向があります。" }
+    ]
+  },
+  avoidant: {
+    badge: "回避型",
+    typeMain: "回避型",
+    name: "感情を封印した「孤高の要塞」の人",
+    sub: "AVOIDANT ATTACHMENT TYPE",
+    psychology: `回避型の心理を一言で表すと、周囲に分厚い城壁を築き、一人で完結することに絶対的な安らぎを感じる「自己完結の状態」にあります。\n\nこのスタイルの根底には「他人はあてにならない」「感情を見せることは弱さである」という、強い他者軽視と自立への執着が存在しています。自分の中の「寂しさ」や「甘え」といった繊細な感情を無意識に抑圧・排除しているため、表面的には非常に落ち着いて見えますが、その内実は、他者との深い関わりによって自分のペースや自由を侵食されることを極端に嫌う、過剰なまでの防衛本能に支配されています。`,
+    love: `恋愛においては、関係が深まるほどに心のシャッターを下ろす「脱活性化戦略」が顕著に現れます。\n\n交際が始まり、相手が自分との情緒的な繋がりやコミットメントを求め始めると、それを「重い」「依存されている」「自由が奪われる」とネガティブに捉え始めます。相手の期待に応えることを苦痛に感じ、連絡を頻繁に絶ったり、仕事や趣味を優先して物理的な距離を置いたりすることで、高まった親密度を意図的に引き下げようとします。\n\nパートナーが寂しさを訴えても「考えすぎだ」「自立してほしい」と突き放すことが多く、相手に「冷酷な人」という印象を与えがちですが、本人にとっては自分のアイデンティティを保つために必要な、心理的な「呼吸空間」の確保なのです。`,
+    strengths: [
+      { title: "高い自己完結能力と自立心", body: "「自分の機嫌は自分で取る」という姿勢が徹底しており、精神的にも実務的にも他者に依存せず、困難な状況でも一人で淡々と対処できる強固な自立心を持っています。" },
+      { title: "感情に流されない論理的思考", body: "感情を切り離して物事を捉える癖がついているため、非常に客観的で論理的な判断を下すことができます。トラブル時でもパニックに陥らず、最短ルートで解決策を導き出します。" },
+      { title: "安定した高いパフォーマンス", body: "対人関係のトラブルにエネルギーを割かない分、仕事や専門分野などの目標に対して驚異的な集中力を発揮します。一貫性があり、感情の起伏に左右されない安定感があります。" },
+      { title: "適度な距離感の維持と境界線", body: "他人のプライベートに深く干渉しないため、相手の自由も尊重する傾向があります。ベタベタした関係を嫌う人にとっては、ドライで非常に付き合いやすい存在となります。" },
+      { title: "ストレス耐性とタフネス", body: "孤独を苦にせず、むしろ一人でいることでエネルギーを回復するため、社会的な同調圧力や周囲の評価に振り回されることが少なく、自分の信念を貫く強さを持っています。" }
+    ],
+    weaknesses: [
+      { title: "共感性の欠如と感情的無知", body: "自分自身の感情を抑圧しているため、他者の悲しみや不安といった感情を察知するのが非常に苦手です。無意識のうちに相手を傷つける発言をしてしまい、人間関係を冷え込ませます。" },
+      { title: "深刻な相談や衝突からの逃避", body: "感情的な話し合いが必要な場面で「面倒くさい」「無意味だ」と対話を拒否し、問題の解決を先送りにします。これにより、信頼関係の修復が困難になるケースが多いです。" },
+      { title: "援助要請（ヘルプ）が出せない", body: "「他人に頼ることは負け」という思い込みが強く、限界を超えていても一人で抱え込みます。その結果、ある日突然糸が切れたようにダウンしたり、音信不通になったりするリスクがあります。" },
+      { title: "喜びを共有できない「無感動」", body: "ネガティブな感情を抑圧すると同時に、喜びや感動といったポジティブな感情も平坦になりやすいです。幸せな瞬間であっても、どこか冷めた視点で見てしまい、幸福感が持続しません。" },
+      { title: "長期的な親密関係の構築不全", body: "浅く広い付き合いは得意ですが、人生のパートナーとして深い絆を結ぶ段階で挫折しやすくなります。常に「逃げ道」を確保しているため、真の意味でのコミットメントを避ける傾向があります。" }
+    ]
+  },
+  fearful: {
+    badge: "恐れ・回避型",
+    typeMain: "恐れ・回避型",
+    name: "親密さへの渇望と拒絶の恐怖を抱く人",
+    sub: "FEARFUL-AVOIDANT ATTACHMENT TYPE",
+    psychology: `恐れ・回避型の心理を一言で表すと、アクセルとブレーキを同時に全力で踏み込んでいるような、非常に激しい葛藤状態にあります。\n\nこのスタイルの根底には「自分は愛されるに値しない」という自己否定と、「他人はいつか自分を傷つけ、見捨てるものだ」という他者否定の両方が存在しています。そのため、心の奥底では誰かと深くつながりたい、ありのままの自分を受け入れてほしいと切実に願っている一方で、いざ誰かと親密になり始めると、強烈な警告アラームが鳴り響きます。\n\n「これ以上近づいたら、取り返しのつかないほど傷つくのではないか」という疑念が生存本能として湧き上がり、相手を信じたい自分と、自分を守るために逃げ出したい自分が絶えず心の中で闘っています。`,
+    love: `恋愛においては、この心の葛藤が「相手を求めるのに、近づくと突き放す」という、一見矛盾した行動として顕著に現れます。\n\n交際当初は情熱的に愛情を注ぎ、理想的な関係を築こうとすることもありますが、関係が深まり、自分の弱さや「素の自分」を見せなければならない段階に達すると、耐えがたい恐怖を感じ始めます。すると、わざと冷淡な態度をとって相手を試したり、あえて自分から関係を壊すような行動（セルフサボタージュ）をとったりすることで、無意識に自分を守ろうとします。\n\n常に「見捨てられる不安」と「縛られる恐怖」の間で揺れ動いているため、安定した長期的な関係を維持することに強いハードルを感じやすいのが特徴です。`,
+    strengths: [
+      { title: "圧倒的な洞察力と「空気を読む」力", body: "不安定な環境で生き抜くために磨かれた感覚により、相手の微細な表情や声のトーンから感情を読み取る能力が極めて高く、危機管理や状況把握において優れた力を発揮します。" },
+      { title: "高い自立心とサバイバル能力", body: "「最後は自分しか頼れない」という覚悟を持って育ったため、他者に依存せず自力で問題を解決する力が強く、過酷な状況下でも一人で完結させる強靭さを持っています。" },
+      { title: "魂のレベルでの深い共感力", body: "自らが深い心の痛みや孤独を抱えているからこそ、他人の絶望や悲しみに対して、表面的な同情ではない、魂に寄り添うような深い共感を示すことができます。" },
+      { title: "危機的状況下での冷静さ", body: "平穏よりも混乱した状況に慣れている側面があるため、他者がパニックに陥るような緊急事態においても、冷静に状況を分析し、迅速に対処する能力に長けています。" },
+      { title: "多角的な視点と慎重さ", body: "物事を安易に信じ込まず、常に多角的に検証する姿勢が、仕事やプライベートにおけるリスク回避や、深い知的探求心へとつながります。" }
+    ],
+    weaknesses: [
+      { title: "感情調節の著しい困難", body: "感情を抑圧しすぎるか、あるいは一気に爆発させるかの両極端になりやすく、一度ネガティブな感情に火がつくと自分でも制御不能になり、激しく精神を消耗します。" },
+      { title: "幸せを破壊する「セルフサボタージュ」", body: "関係が順調で幸せであるほど「これが壊れた時のショックに耐えられない」という恐怖が勝り、自ら関係を台無しにしてしまう傾向があります。" },
+      { title: "慢性的な孤独感と疎外感", body: "誰かと一緒にいても「本当の自分を見せたら嫌われる」という防衛本能が常に働いているため、物理的にそばに人がいても、心の底からの充足感を得られず孤独を感じやすいです。" },
+      { title: "極端な「0か100か」の人間関係", body: "相手を「完璧な味方」か「裏切り者の敵」かのどちらかに分類してしまいがちで、人間関係の適度な距離感や、曖昧なグレーゾーンを受け入れることが困難です。" },
+      { title: "自己アイデンティティの不安定さ", body: "「親密になりたい自分」と「拒絶したい自分」が常に衝突しているため、自分の本音や価値観がわからなくなりやすく、一貫した自己像を持ちにくい不安定さがあります。" }
+    ]
+  }
+};
+
+// ===== STATE =====
+let currentQ = 0;
+let answers = new Array(25).fill(null);
+// ===== NAVIGATION =====
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function startQuiz() {
+  currentQ = 0;
+  answers = new Array(25).fill(null);
+  showPage('page-quiz');
+  renderQuestion();
+}
+
+function retryQuiz() {
+  startQuiz();
+}
+
+// ===== QUIZ LOGIC =====
+function renderQuestion() {
+  const q = questions[currentQ];
+  const idx = currentQ + 1;
+  const pct = Math.max(2, Math.round((idx / 25) * 100));
+
+  document.getElementById('quiz-chapter').textContent = q.ch;
+  document.getElementById('quiz-number').textContent = `Q.${String(idx).padStart(2,'0')} / 25`;
+  document.getElementById('quiz-question').textContent = q.q;
+  document.getElementById('quiz-progress-text').textContent = q.ch;
+  document.getElementById('quiz-count-text').textContent = `${idx} / 25`;
+  document.getElementById('progress-fill').style.width = pct + '%';
+
+  // Restore selection
+  document.querySelectorAll('.scale-btn').forEach(btn => {
+    btn.classList.remove('selected');
+    if (answers[currentQ] && parseInt(btn.dataset.val) === answers[currentQ]) {
+      btn.classList.add('selected');
+    }
+  });
+
+  document.getElementById('btn-prev').style.display = currentQ > 0 ? 'inline-block' : 'none';
+
+  // Animate in
+  const qEl = document.getElementById('quiz-question');
+  qEl.style.animation = 'none';
+  void qEl.offsetWidth;
+  qEl.style.animation = 'fadeUp 0.4s ease forwards';
+}
+
+function selectAnswer(val) {
+  answers[currentQ] = val;
+  document.querySelectorAll('.scale-btn').forEach(btn => {
+    btn.classList.remove('selected');
+    if (parseInt(btn.dataset.val) === val) btn.classList.add('selected');
+  });
+
+  // Auto-advance after brief delay
+  setTimeout(() => {
+    if (currentQ < 24) {
+      currentQ++;
+      renderQuestion();
+    } else {
+      finishQuiz();
+    }
+  }, 380);
+}
+
+function prevQuestion() {
+  if (currentQ > 0) {
+    currentQ--;
+    renderQuestion();
+  }
+}
+
+function finishQuiz() {
+  showPage('page-loading');
+  setTimeout(() => {
+    calculateResult();
+    showPage('page-result');
+  }, 3000);
+}
+
+// ===== SCORING =====
+function calculateResult() {
+  let anxietyTotal = 0, anxietyCount = 0;
+  let avoidTotal = 0, avoidCount = 0;
+
+  questions.forEach((q, i) => {
+    const val = answers[i] || 3;
+    if (q.type === 'A') { anxietyTotal += val; anxietyCount++; }
+    else if (q.type === 'V') { avoidTotal += val; avoidCount++; }
+    else if (q.type === 'B') { anxietyTotal += val; anxietyCount++; avoidTotal += val; avoidCount++; }
+  });
+
+  const anxietyScore = (anxietyTotal / anxietyCount).toFixed(2);
+  const avoidScore = (avoidTotal / avoidCount).toFixed(2);
+
+  const highAnxiety = parseFloat(anxietyScore) >= 3.0;
+  const highAvoid = parseFloat(avoidScore) >= 3.0;
+
+  let type;
+  if (!highAnxiety && !highAvoid) type = 'secure';
+  else if (highAnxiety && !highAvoid) type = 'anxious';
+  else if (!highAnxiety && highAvoid) type = 'avoidant';
+  else type = 'fearful';
+
+  renderResult(type, parseFloat(anxietyScore), parseFloat(avoidScore));
+}
+
+let matrixChart = null;
+
+function renderResult(type, aScore, vScore) {
+  const c = resultContent[type];
+
+  // スコアを%変換（1〜5点 → 0〜100%）
+  const aPct = Math.round(((aScore - 1) / 4) * 100);
+  const vPct = Math.round(((vScore - 1) / 4) * 100);
+
+  // ヘッダー
+  document.getElementById('res-badge').textContent = c.badge;
+  document.getElementById('res-type-main').textContent = c.typeMain;
+  document.getElementById('res-name').textContent = c.name;
+  document.getElementById('res-sub').textContent = c.sub;
+
+  // スコア表示
+  document.getElementById('res-anxiety-score').innerHTML = `${aPct}<span>%</span>`;
+  document.getElementById('res-avoid-score').innerHTML = `${vPct}<span>%</span>`;
+
+  const toHtml = str => str.replace(/\n\n/g, '<br><br>').replace(/\n/g, '<br>');
+
+  // 心理特性
+  document.getElementById('res-psychology').innerHTML = toHtml(c.psychology);
+
+  // 恋愛傾向
+  document.getElementById('res-love').innerHTML = toHtml(c.love);
+
+  // 強み
+  document.getElementById('res-strengths').innerHTML = c.strengths.map((s, i) => `
+    <div class="res-list-item">
+      <div class="res-list-num">${i + 1}</div>
+      <div class="res-list-content">
+        <div class="res-list-title">${s.title}</div>
+        <div class="res-list-body">${s.body}</div>
+      </div>
+    </div>
+  `).join('');
+
+  // 弱み
+  document.getElementById('res-weaknesses').innerHTML = c.weaknesses.map((s, i) => `
+    <div class="res-list-item">
+      <div class="res-list-num weak">${i + 1}</div>
+      <div class="res-list-content">
+        <div class="res-list-title">${s.title}</div>
+        <div class="res-list-body">${s.body}</div>
+      </div>
+    </div>
+  `).join('');
+
+  // バーアニメーション
+  setTimeout(() => {
+    document.getElementById('anxiety-bar').style.width = aPct + '%';
+    document.getElementById('avoid-bar').style.width = vPct + '%';
+  }, 300);
+}
+</script>
+</body>
+</html>
